@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema({
   reviewer: String,
@@ -11,9 +11,10 @@ const bookSchema = new mongoose.Schema({
   author: String,
   genre: String,
   summary: String,
+  img_url: String,
   reviews: [reviewSchema],
 });
 
-const Book = mongoose.model('Book', bookSchema);
+const Book = mongoose.model("Book", bookSchema);
 
 module.exports = Book;
