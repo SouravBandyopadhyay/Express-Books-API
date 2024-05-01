@@ -97,7 +97,7 @@ const getBookRecommendations = async (req, res) => {
     let query = {};
 
     // If genre is provided, include it in the query
-    if (genre) {
+    if (genre.toLowerCase()) {
       query.genre = genre;
     }
 
