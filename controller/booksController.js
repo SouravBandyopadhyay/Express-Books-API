@@ -72,13 +72,16 @@ const postBook = async (req, res) => {
   }
 };
 
+/*LINK: http://localhost:3010/api/books/getbook?title=The Picture of Dorian Gray */
 const fetchBooksByName = async (req, res) => {
-  const bookName = req.params.title.toLowerCase(); // Convert provided string to lowercase
+  const { title } = req.query;
+  const bookName = decodeURIComponent(title);
+  console.log(bookName);
+  const modifiedBookName = bookName.toLowerCase(); // Convert provided string to lowercase
 
   try {
-    // Use the lowercase book name for searching
     const books = await Book.find({
-      title: { $regex: bookName, $options: "i" },
+      title: { $regex: modifiedBookName, $options: "i" },
     });
     res.json(books);
   } catch (err) {
