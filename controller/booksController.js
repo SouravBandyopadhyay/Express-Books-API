@@ -80,7 +80,7 @@ const fetchBooksByName = async (req, res) => {
   const modifiedBookName = bookName.toLowerCase(); // Convert provided string to lowercase
 
   try {
-    const books = await Book.find({
+    const books = await Book.findOne({
       title: { $regex: modifiedBookName, $options: "i" },
     });
     res.json(books);
