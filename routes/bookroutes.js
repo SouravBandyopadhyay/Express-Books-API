@@ -6,6 +6,7 @@ const booksController = require("../controller/booksController");
 router.get("/getall-books", booksController.fetchAllBooks);
 router.get("/getbook", booksController.fetchBooksByName);
 router.get("/book-recommendations", booksController.getBookRecommendations);
+router.get("/books/author/:author", booksController.getBooksByAuthor);
 
 // NOTE Post is Admin Route
 router.post("/register-book", booksController.postBook);

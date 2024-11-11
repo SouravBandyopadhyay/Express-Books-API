@@ -56,6 +56,12 @@ const postBook = async (req, res) => {
   }
 
   try {
+    // Check if a book with the same title and author already exists
+    const existingBook = await Book.findOne({ title, author });
+    if (existingBook) {
+      return res.status(409).json({ message: "Book already exists" });
+    }
+
     const newBook = new Book({
       title,
       author,
@@ -118,9 +124,27 @@ const getBookRecommendations = async (req, res) => {
   }
 };
 
+
+const getBooksByAuthor = async (req, res) => {
+  const { author } = req.params;
+
+  try {
+    const books = await Book.find({ author: new RegExp(`^${author}$`, "i") });
+    if (books.length === 0) {
+      return res.status(404).json({ message: "No books found for this author" });
+    }
+    res.status(200).json(books);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
+
 module.exports = {
   fetchAllBooks,
   postBook,
   fetchBooksByName,
   getBookRecommendations,
+  getBooksByAuthor
 };
