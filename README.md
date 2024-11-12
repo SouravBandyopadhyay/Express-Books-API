@@ -1,7 +1,3 @@
-Here’s a simplified, less technical README for your Express API project:
-
----
-
 # Simple Express API Project
 
 ## Overview
