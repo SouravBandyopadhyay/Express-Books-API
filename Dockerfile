@@ -13,9 +13,6 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Build the application (if needed)
-# RUN npm run build
-
 # Stage 2: Create production image
 FROM node:20.15.0-alpine AS production
 
