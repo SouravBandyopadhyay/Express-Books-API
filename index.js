@@ -10,7 +10,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
-const port = 3010;
+const port = process.env.PORT;
 
 app.use(express.static("static"));
 
