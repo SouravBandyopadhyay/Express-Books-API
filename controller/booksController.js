@@ -89,7 +89,7 @@ const fetchBooksByName = async (req, res) => {
   }
 };
 
-// http://localhost:3010/api/books/book-recommendations?genre=Fiction
+/*LINK: http://localhost:3010/api/books/book-recommendations?genre=Fiction*/
 const getBookRecommendations = async (req, res) => {
   const { genre } = req.query; // You can add more parameters for filtering if needed
 
